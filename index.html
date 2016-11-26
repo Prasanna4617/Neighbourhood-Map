@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <!-- Setting Viewport Width -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Link External CSS  -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Chennai Restaurants</title>
+</head>
+
+<body>
+    <!-- Placing the Map-->
+    <div id="map" class="my-map"></div>
+    <!-- Creating a Search Bar -->
+    <input type="search" id="autocomplete" placeholder="Search from List" size="35" data-bind="textInput: input, valueUpdate: 'keyup'" />
+    <!-- Creating DropDown Button -->
+    <div class="dropdown">
+        <button class="dropbtn">Restaurant List</button>
+        <div class="dropdown-content">
+            <!-- Creating DropDown List -->
+            <div class="drop-list" data-bind="foreach: search">
+                <p data-bind="text: $data.name, click: $parent.listClick"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Intializing the Map
+        function initApp() {
+            "use strict";
+            initMap();
+            var app = new ViewModel();
+            // Applying KO bindings
+            ko.applyBindings(app);
+        }
+    </script>
+    <!-- External JS files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/knockout-3.4.1.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmwvdhlbY5FAWDskjKieLZMhKt9V7OVC0&v=3&callback=initApp">
+    </script>
+</body>
+
+</html>
